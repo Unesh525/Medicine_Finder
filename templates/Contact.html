@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/contact.css') }}">
+    <h1 style="margin-top:100px;text-align:center;">Contact Us</h1>
+<div class="contact-container ">
+    <form method="post" action="/contact">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+{% endblock %}

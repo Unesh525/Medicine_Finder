@@ -1,0 +1,22 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<h1 style="margin-bottom: 20px;font-size:35px;margin-top:20px;margin-left:100px;">Show All admin </h1>
+{% if data %}
+<table  border="2px">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Email</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d[0]}}</td>
+        <td>{{d[1]}}</td>
+        <td>{{d[2]}}</td>
+        <td>{{d[3]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

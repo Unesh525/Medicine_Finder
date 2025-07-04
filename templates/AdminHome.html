@@ -1,0 +1,28 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<div class="admin-container">
+    {% if photo != 'no' %}
+        <img src="{{ url_for('static', filename='photos/' + photo) }}" width="200" height="200" alt="Admin Photo"/>
+        <br>
+        <a href="change_admin_photo">Change Photo</a>
+    {% else %}
+        <a href="admin_photo">Upload Photo</a>
+    {% endif %}
+
+
+    {% if data %}
+
+        <div class="admin-info">
+            <strong>Admin Name:</strong> {{ data[0] }}<br/>
+            <strong>Address:</strong> {{ data[1] }}<br/>
+            <strong>Contact:</strong> {{ data[2] }}<br/>
+            <strong>Email:</strong> {{ data[3] }}<br/><br/>
+            <a href="/changed_password">Change Password</a>
+            <a href="update_admin_profile">Update Profile</a>
+        </div>
+    {% elif msg %}
+        <h2>{{ msg }}</h2>
+    {% endif %}
+</div>
+
+{% endblock %}

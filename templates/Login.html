@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block m1 %}
+
+
+<div class="box">
+
+ <form  method="post" action="/login" onsubmit="return A()">
+    <h1 style="text-align:center;">Login</h1>
+
+
+            <p>
+                Email: <input type="text" id="email" name="T1">
+                <span id="sp1" style="color: red;"></span>
+            </p>
+            <p>
+                Password: <input type="password" id="password" name="T2">
+                <span id="sp1" style="color: red;"></span>
+
+            </p>
+            <button type="submit" class="btn3">Login</button>
+
+    </form>
+    </div>
+<script>
+    function  A()
+    {
+        var v1=document.getElementById("email").value.trim();
+        var v2=document.getElementById("password").value.trim();
+        var s1=document.getElementById("sp1");
+        var s2=document.getElementById("sp2");
+
+        var f=true;
+         if (v1 === "") {
+            s1.innerText = " Please Enter Medical Name ";
+           return  f = false;
+        }
+        else if (v2 === "") {
+            s2.innerText = " Please Enter Owner Name is required";
+            return f = false;
+        }
+        return f;
+
+
+    }
+</script>
+{% if msg %}
+    <h3>{{msg}}</h3>
+{% endif %}
+{% endblock %}

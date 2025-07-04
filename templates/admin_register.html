@@ -1,0 +1,66 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="../static/styles/style.css">
+
+<div class="box">
+
+<form method="post" action="/admin_reg" onsubmit="return A()">
+        <h3 style="margin-right:20px;">Medical Home</h3>
+
+    <p>Name : <input type="text" name="Name" id="name"><span id="sp1" style="color:red"></span></p>
+    <p>Address : <input type="text" name="Address" id="address"><span id="sp2" style="color:red"></span></p>
+    <p>Contact : <input type="text" name="Contact" id="contact"><span id="sp3" style="color:red"></span></p>
+    <p>Email : <input type="text" name="Email" id="email"><span id="sp4" style="color:red"></span></p>
+    <p>Password : <input type="password" name="Password" id="password"><span id="sp5" style="color:red"></span></p>
+    <button type="submit" class="btn3">Register</button>
+</form>
+<p style="color: red;">{{msg}}</p>
+</div>
+<script>
+    function A() {
+        var v1 = document.getElementById("name").value.trim();
+        var v2 = document.getElementById("address").value.trim();
+        var v3 = document.getElementById("contact").value.trim();
+        var v4 = document.getElementById("email").value.trim();
+        var v5 = document.getElementById("password").value.trim();
+
+        var s1 = document.getElementById("sp1");
+        var s2 = document.getElementById("sp2");
+        var s3 = document.getElementById("sp3");
+        var s4 = document.getElementById("sp4");
+        var s5 = document.getElementById("sp5");
+
+
+        s1.innerText =""
+        s2.innerText =""
+        s3.innerText =""
+        s4.innerText =""
+        s5.innerText =""
+
+        var f = true;
+
+        if (v1 === "") {
+            s1.innerText = "Name is required";
+            f = false;
+        }
+        if (v2 === "") {
+            s2.innerText = "Address is required";
+            f = false;
+        }
+        if (v3 === "" || isNaN(v3) || v3.length != 10) {
+            s3.innerText = "Valid 10-digit contact is required";
+            valid = false;
+        }
+        if (v4 === "" || !v4.includes("@")) {
+            s4.innerText = "Valid email is required";
+            f = false;
+        }
+        if (v5.length < 6) {
+            s5.innerText = "Password must be at least 6 characters";
+            f = false;
+        }
+
+        return f;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "MedicalDash.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="../static/styles/style.css">
+<h1>Edit Medicine </h1>
+
+  <div class="box">
+
+ {% if data %}
+<form method="post" action="/update_medicine">
+    <p>Medicine ID :<input type="text" value="{{data[0]}}" name="T1" readonly></p>
+    <p>Medicine Name:<input type="text" name="medicine_name" value="{{data[1]}}" id="name"><span id="sp1"></span> </p>
+    <p>Medicine Type:<input type="text" name="medicine_type" value="{{data[2]}}" id="type"><span id="sp2"></span></p>
+    <p>Medicine lic:<input type="text" name="medicine_lic" value="{{data[3]}}" id="lic"><span id="sp3"></span></p>
+    <p>Medicine Price:<input type="text" name="medicine_price" value="{{data[4]}}" id="price"><span id="sp4"></span></p>
+    <p>Medicine Description<input type="text" name="medicine_description" value="{{data[5]}}" id="dsc"><span id="sp5"></span></p>
+
+    <button type="submit" class="btn3">Update</button>
+</form>
+{% elif msg %}
+    {{msg}}
+{% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="../static/styles/style.css">
+<h1>Edit Medicals</h1>
+
+<div class="box">
+{% if data %}
+<form action="/deleted_medical" method="post">
+  <p>Medical Name :<input type="text" name="Medical_name" value="{{data[0]}}" readonly></p>
+  <p>Owner :<input type="text" name="Owner_name" value="{{data[1]}}" readonly></p>
+  <p>Lic :<input type="text" name="Lic" value="{{data[2]}}" readonly></p>
+  <p>Address :<input type="text" name="Address" value="{{data[3]}}" readonly></p>
+  <p>Contact :<input type="text" name="Contact" value="{{data[4]}}" readonly></p>
+  <p>Email :<input type="text" name="Email" value="{{data[5]}}" readonly/></p>
+  <button type="submit" class="btn3">Confirm Delete</button>
+</form>
+{% elif msg %}
+  <p>{{msg}}</p>
+{% endif %}
+  <div class="box">
+
+{% endblock %}

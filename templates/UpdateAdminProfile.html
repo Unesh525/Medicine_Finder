@@ -1,0 +1,78 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel="stylesheet" href="../static/styles/style.css">
+
+</head>
+<body>
+    <p>Admin Profile Update</p>
+
+  <div class="box">
+
+    {% if data %}
+    <form method="post" action="update_admin_profile" onsubmit="return A()">
+        <p>
+            Name: <input type="text" name="name" id="name" value="{{data[0]}}">
+            <span id="sp1" style="color: red;"></span>
+        </p>
+        <p>
+            Address: <input type="text" id="address" name="address" value="{{data[1]}}">
+            <span id="sp2" style="color: red;"></span>
+
+        </p>
+        <p>
+            Contact: <input type="text" id="contact" name="contact" value="{{data[2]}}">
+            <span id="sp3" style="color: red;"></span>
+
+        </p>
+        <p>
+            Email: <input type="text" name="email" value="{{data[3]}}" readonly>
+        </p>
+        <button type="submit" class="btn3">Update Profile</button>
+    </form>
+    {% elif msg %}
+        <h3>{{msg}}</h3>
+        <a href="admin_home">Continue</a>
+    {% endif %}
+  </div>
+</body>
+<script>
+     function A() {
+        var v1 = document.getElementById("name").value.trim();
+        var v2 = document.getElementById("address").value.trim();
+        var v3 = document.getElementById("contact").value.trim();
+
+
+        var s1 = document.getElementById("sp1");
+        var s2 = document.getElementById("sp2");
+        var s3 = document.getElementById("sp3");
+
+
+
+        s1.innerText =""
+        s2.innerText =""
+        s3.innerText =""
+
+
+        var f = true;
+
+        if (v1 === "") {
+            s1.innerText = "Please Enter Admin Name";
+            f = false;
+        }
+       else if (v2 === "") {
+            s2.innerText = "Please Enter Address";
+            f = false;
+        }
+       else if (v3 === "" ) {
+            s3.innerText = "Please Enter Contact Number";
+            f = false;
+        }
+        return f;
+    }
+</script>
+</html>
+{% endblock %}

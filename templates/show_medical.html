@@ -1,0 +1,40 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="../static/styles/style.css">
+<h1 style="margin-bottom: 20px;font-size:35px;margin-top:20px;margin-left:100px;">Show Medical</h1>
+{% if data %}
+<table  border="2" width="100%" >
+    <tr>
+        <th>Medical Name</th>
+        <th>Owner Name<th/>
+        <th>Lic</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Mange</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{d[0]}}</td>
+        <td>{{d[1]}}</td>
+        <td>{{d[2]}}</td>
+        <td>{{d[3]}}</td>
+        <td>{{d[4]}}</td>
+        <td>{{d[5]}}</td>
+        <td>
+             <div class="box2">
+            <form class="form1" method="post" action="/edit_medical">
+                <input type="hidden" name="Email" value="{{d[5]}}" />
+                <button type="submit" class="btn1">Edit</button>
+            </form>
+            <form class="form1" method="post" action="/delete_medical">
+                <input type="hidden" name="Email" value="{{d[5]}}" />
+                <button type="submit" class="btn2">Delete</button>
+            </form>
+             </div>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{%  endif %}
+{% endblock %}

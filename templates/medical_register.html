@@ -1,0 +1,82 @@
+{% extends "AdminDash.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="../static/styles/style.css">
+
+  <div class="box">
+
+<form method="post" action="/medical_reg" onsubmit="return A()">
+        <h3 style="margin-right:20px;">Medical Register</h3>
+
+  <p>Medical Name :<input type="text" name="Medical_name" id="name" > <span style="color: red;" id="sp1"></span> </p>
+  <p>Owner Name : <input type="text" name="Owner_name" id="owner"> <span id="sp2" style="color: red;"></span></p>
+  <p>Lic : <input type="text" name="Lic" id="lic"><span id="sp3" style="color: red;"> </span></p>
+  <p>Address : <input type="text" name="Address" id="address"> <span id="sp4" style="color: red;"></span></p>
+  <p>Contact :<input type="text" name="Contact" id="contact"> <span id="sp5" style="color: red;"></span></p>
+  <p>Email :<input type="text" name="Email" id="email"> <span id="sp6" style="color: red;"></span></p>
+  <p>Password :<input type="text" name="Password" id="password"> <span id="sp7" style="color: red;" ></span></p>
+  <button type="submit" class="btn3">Register</button>
+</form>
+<p style="color: red;">{{msg}}</p>
+  </div>
+<script>
+  function A() {
+        var v1 = document.getElementById("name").value.trim();
+        var v2 = document.getElementById("owner").value.trim();
+        var v3 = document.getElementById("lic").value.trim();
+        var v4 = document.getElementById("address").value.trim();
+        var v5 = document.getElementById("contact").value.trim();
+        var v6 = document.getElementById("email").value.trim();
+        var v7 = document.getElementById("password").value.trim();
+
+        var s1 = document.getElementById("sp1");
+        var s2 = document.getElementById("sp2");
+        var s3 = document.getElementById("sp3");
+        var s4 = document.getElementById("sp4");
+        var s5 = document.getElementById("sp5");
+        var s6 = document.getElementById("sp6");
+        var s7 = document.getElementById("sp7");
+
+
+        s1.innerText =""
+        s2.innerText =""
+        s3.innerText =""
+        s4.innerText =""
+        s5.innerText =""
+        s6.innerText =""
+        s7.innerText =""
+
+        var f = true;
+
+        if (v1 === "") {
+            s1.innerText = " Please Enter Medical Name ";
+            f = false;
+        }
+        else if (v2 === "") {
+            s2.innerText = " Please Enter Owner Name is required";
+            f = false;
+        }
+       else if (v3 === "" ) {
+            s3.innerText = " Please Enter Medical License is required";
+            valid = false;
+        }
+       else if (v4 === "") {
+            s4.innerText = " Please Enter Medicine Address is required";
+            f = false;
+        }
+       else if (v5==="") {
+            s5.innerText = "Please Enter Medical Contact is required";
+            f = false;
+        }
+       else if (v6==="") {
+          s6.innerText = " Please Enter Medical Email is required";
+          f = false;
+        }
+       else if (v7==="") {
+          s7.innerText = " Please Enter Medical Password is required";
+          f = false;
+        }
+
+        return f;
+    }
+</script>
+{% endblock %}

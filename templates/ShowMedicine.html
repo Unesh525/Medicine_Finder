@@ -1,0 +1,51 @@
+{% extends "MedicalDash.html" %}
+{% block m1 %}
+<link rel="stylesheet" href="../static/styles/style.css">
+
+<h1 style="margin-bottom: 20px;font-size:35px;margin-top:20px;margin-left:100px;">Show Medicine</h1>
+
+{% if data %}
+<table border="2px" width="100%" style="collapse: collapse;">
+    <tr>
+        <th>Medicine No.</th>
+        <th>Medicine Name</th>
+        <th>Medicine Type</th>
+        <th>Medicine License </th>
+        <th>Medicine Description</th>
+        <th>Price</th>
+        <th>Email </th>
+        <th>Mange </th>
+    </tr>
+    {% for d in data %}
+    <tr>
+
+        <td>{{d[0]}}</td>
+        <td>{{d[1]}}</td>
+        <td>{{d[2]}}</td>
+        <td>{{d[3]}}</td>
+        <td>{{d[5]}}</td>
+        <td>{{d[4]}}</td>
+        <td>{{d[6]}}</td>
+
+        <td>
+            <div class="box2">
+            <form class="form1" method="post" action="/edit_medicine">
+                <p><input type="hidden" name="T1" value="{{d[0]}}"/> </p>
+                <button type="submit" class="btn1">Edit</button>
+            </form>
+            <form class="form1" method="post" action="/delete_medicine">
+                <p><input type="hidden" name="T1" value="{{d[0]}}"/> </p>
+                <button type="submit" class="btn2">Delete</button>
+            </form>
+                </div>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% elif msg %}
+<p>{{msg}}</p>
+{% endif %}
+{% endblock %}

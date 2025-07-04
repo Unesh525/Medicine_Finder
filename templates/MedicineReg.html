@@ -1,0 +1,76 @@
+{% extends "MedicalDash.html" %}
+{% block m1 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel="stylesheet" href="../static/styles/style.css">
+
+</head>
+<body>
+<h1>Medicine Registration</h1>
+
+  <div class="box">
+
+<form method="post" action="/medicine_reg" onsubmit="return A()">
+    <p>Medicine Name:<input type="text" name="medicine_name" id="name"><span id="sp1"></span> </p>
+    <p>Medicine Type:<input type="text" name="medicine_type" id="type"><span id="sp2"></span></p>
+    <p>Medicine lic:<input type="text" name="medicine_lic" id="lic"><span id="sp3"></span></p>
+    <p>Medicine Price:<input type="text" name="medicine_price" id="price"><span id="sp4"></span></p>
+    <p>Medicine Description<input type="text" name="medicine_description" id="dsc"><span id="sp5"></span></p>
+    <button type="submit" class="btn3">Submit</button>
+</form>
+<p>{{msg}}</p>
+  </div>
+</body>
+
+<script>
+    function A() {
+        var v1 = document.getElementById("name").value.trim();
+        var v2 = document.getElementById("type").value.trim();
+        var v3 = document.getElementById("lic").value.trim();
+        var v4 = document.getElementById("price").value.trim();
+        var v5 = document.getElementById("dsc").value.trim();
+
+        var s1 = document.getElementById("sp1");
+        var s2 = document.getElementById("sp2");
+        var s3 = document.getElementById("sp3");
+        var s4 = document.getElementById("sp4");
+        var s5 = document.getElementById("sp5");
+
+
+        s1.innerText =""
+        s2.innerText =""
+        s3.innerText =""
+        s4.innerText =""
+        s5.innerText =""
+
+        var f = true;
+
+        if (v1 === "") {
+            s1.innerText = "Medicine Name is required";
+            f = false;
+        }
+        if (v2 === "") {
+            s2.innerText = "Medicine Type is required";
+            f = false;
+        }
+        if (v3 === "" ) {
+            s3.innerText = "Medicine License is required";
+            valid = false;
+        }
+        if (v4 === "") {
+            s4.innerText = "Medicine Price is required";
+            f = false;
+        }
+        if (v5==="") {
+            s5.innerText = "Medicine Description is required";
+            f = false;
+        }
+
+
+        return f;
+    }
+</script>
+</html>
+{% endblock %}

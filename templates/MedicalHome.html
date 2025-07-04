@@ -1,0 +1,35 @@
+{% extends "MedicalDash.html" %}
+{% block m1 %}
+
+<link rel="stylesheet" href="../static/styles/style.css">
+
+<div class="admin-container">
+        <h3 style="margin-right:20px;">Medical Home</h3>
+
+    {% if photo != 'no' %}
+        <img src="{{ url_for('static', filename='photos/' + photo) }}" width="200" height="200" alt="Medical Photo"/>
+        <br>
+        <a href="change_medical_photo">Change Photo</a>
+    {% else %}
+        <a href="medical_photo">Upload Photo</a>
+    {% endif %}
+
+
+    {% if data %}
+        <div class="admin-info">
+
+            <strong>Medical Name:</strong> {{ data[0] }}<br/>
+            <strong>Owner Name:</strong> {{ data[1] }}<br/>
+            <strong>License Plate:</strong> {{ data[2] }}<br/>
+            <strong>Address:</strong> {{ data[3] }}<br/>
+            <strong>Contact Number:</strong> {{ data[4] }}<br/>
+            <strong>Email:</strong> {{ data[5] }}<br/>
+        </div>
+    {% elif msg %}
+        <h2>{{ msg }}</h2>
+    {% endif %}
+
+    <a href="update_medical_profile">Update Profile</a>
+    <a href="changed_password">Change Password</a>
+</div>
+{% endblock %}
