@@ -1,14 +1,17 @@
-import pymysql
+import psycopg2
 
 def make_connection():
-    conn = pymysql.connect(host="localhost",
-                           user="root",
-                           passwd='',
-                           db="medicine",
-                           port=3306,
-                           autocommit=True)
-    cur = conn.cursor()
+    conn = psycopg2.connect(
+        host="ep-calm-night-1234567.us-east-2.aws.neon.tech",  # Neon DB host
+        database="neondb",
+        user="neondb_owner",
+        password="YOUR_PASSWORD",  
+        sslmode="require"
+    )
+     cur = conn.cursor()
     return cur
+
+   
 
 def check_photo(email):
     conn  = pymysql.connect(host="localhost",user="root",port=3306,passwd='',db="medicine",autocommit=True)
