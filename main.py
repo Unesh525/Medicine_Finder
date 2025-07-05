@@ -283,7 +283,7 @@ def admin_register():
                         msg = "Admin Data Saved Successfully"
                     else:
                         msg = "Admin Data Not Saved Successfully"
-                except pymysql.err.IntegrityError:
+                except psycopg2.err.IntegrityError:
                         msg = "User Already Exists"
                 return render_template("admin_register.html",msg=msg)
             return render_template("admin_register.html")
@@ -402,7 +402,7 @@ def medical_reg():
                         msg = "Medical Data Saved Successfully"
                     else:
                         msg = "Medical Data Not Saved Successfully"
-                except pymysql.err.IntegrityError:
+                except psycopg2.err.IntegrityError:
                     msg = "User Already Exists"
                 return render_template("medical_register.html", msg=msg)
             return render_template("medical_register.html")
@@ -680,7 +680,7 @@ def medicine_reg():
                         else:
                             msg = "Medicine Registered Failed"
                         return render_template("MedicineReg.html",msg=msg)
-                    except pymysql.err.IntegrityError:
+                    except psycopg2.err.IntegrityError:
                         msg = "Medicine already Registered"
                         return render_template("MedicineReg.html",msg=msg)
                 else:
