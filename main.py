@@ -114,8 +114,7 @@ def change_admin_photo():
         em=session['email']
         if ut=='admin':
             photo = check_photo(em)
-            conn = pymysql.connect(host='localhost',user="root",password='',port=3306,db='medicine',autocommit=True)
-            cur = conn.cursor()
+            cur = make_connection()
             sql = "delete from photos where email='"+em+"'"
             cur.execute(sql)
             n=cur.rowcount
@@ -147,8 +146,7 @@ def adminphoto1():
                     file_ext = os.path.splitext(path)[1][1:]
                     filename = str(int(time.time()))+'.'+file_ext
                     filename = secure_filename(filename)
-                    conn = pymysql.connect(host='localhost',user='root',passwd='',db='medicine',autocommit=True)
-                    cur = conn.cursor()
+                    cur = make_connection()
                     sql = "insert into photos values('"+em+"','"+filename+"')"
                     try:
                         cur.execute(sql)
@@ -200,8 +198,7 @@ def change_medical_photo():
         em=session['email']
         if ut=='medical':
             photo = check_photo(em)
-            conn = pymysql.connect(host='localhost',user="root",password='',port=3306,db='medicine',autocommit=True)
-            cur = conn.cursor()
+            cur = make_connection()
             sql = "delete from photos where email='"+em+"'"
             cur.execute(sql)
             n=cur.rowcount
@@ -233,8 +230,7 @@ def medicalphoto1():
                     file_ext = os.path.splitext(path)[1][1:]
                     filename = str(int(time.time()))+'.'+file_ext
                     filename = secure_filename(filename)
-                    conn = pymysql.connect(host='localhost',user='root',passwd='',db='medicine',autocommit=True)
-                    cur = conn.cursor()
+                    cur = make_connection()
                     sql = "insert into photos values('"+em+"','"+filename+"')"
                     try:
                         cur.execute(sql)
