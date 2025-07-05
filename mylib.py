@@ -14,8 +14,7 @@ def make_connection():
    
 
 def check_photo(email):
-    conn  = pymysql.connect(host="localhost",user="root",port=3306,passwd='',db="medicine",autocommit=True)
-    cur = conn.cursor()
+    cur = make_connection()
     sql = "SELECT * FROM photos WHERE email = '"+email+"'"
     cur.execute(sql)
     n = cur.rowcount
