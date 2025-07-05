@@ -376,7 +376,6 @@ def medical_reg():
         if ut=="admin":
             if request.method=='POST':
                 try:
-
                     cur1 = make_connection()
                     cur2 = make_connection()
 
@@ -402,9 +401,10 @@ def medical_reg():
                         msg = "Medical Data Saved Successfully"
                     else:
                         msg = "Medical Data Not Saved Successfully"
+                    return render_template("medical_register.html",msg=msg)
                 except psycopg2.err.IntegrityError:
                     msg = "User Already Exists"
-                return render_template("medical_register.html", msg=msg)
+                    return render_template("medical_register.html",msg=msg)
             return render_template("medical_register.html")
         else:
             return redirect(url_for("autherror"))
