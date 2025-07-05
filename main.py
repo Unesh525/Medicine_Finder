@@ -657,37 +657,36 @@ def medicine_reg():
     if 'email' in session:
         em = session['email']
         ut = session['ut']
-        if request.method == "GET":
-            return render_template("MedicineReg.html")
-        else:
-            if ut=="medical":
-                if request.method == 'POST':
-                    try:
-                        cur = make_connection()
-                        id = 0
-                        medicine_name=request.form['medicine_name']
-                        medicine_type=request.form['medicine_type']
-                        medicine_lic=request.form['medicine_lic']
-                        medicine_price =request.form['medicine_price']
-                        medicine_description=request.form['medicine_description']
-
-                        sql = "INSERT INTO medicine (med_id, medicine_name, medicine_type, medicine_lic, medicine_price, medicine_description, Email_of_medical) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                        values = (id, medicine_name, medicine_type, medicine_lic, medicine_price, medicine_description,em)
-                        cur.execute(sql, values)
-
-                        n=cur.rowcount
-                        if n==1:
-                            msg = "Medicine Registered Successfully"
-                        else:
-                            msg = "Medicine Registered Failed"
-                        return render_template("MedicineReg.html",msg=msg)
-                    except psycopg2.err.IntegrityError:
-                        msg = "Medicine already Registered"
-                        return render_template("MedicineReg.html",msg=msg)
+        if ut=="medical":
+            if request.method == "GET":
+                return render_template("MedicineReg.html")
+            elif request.method == 'POST':
+                        try:
+                            cur = make_connection()
+                            id = 0
+                            medicine_name=request.form['medicine_name']
+                            medicine_type=request.form['medicine_type']
+                            medicine_lic=request.form['medicine_lic']
+                            medicine_price =request.form['medicine_price']
+                            medicine_description=request.form['medicine_description']
+    
+                            sql = "INSERT INTO medicine (med_id, medicine_name, medicine_type, medicine_lic, medicine_price, medicine_description, Email_of_medical) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                            values = (id, medicine_name, medicine_type, medicine_lic, medicine_price, medicine_description,em)
+                            cur.execute(sql, values)
+    
+                            n=cur.rowcount
+                            if n==1:
+                                msg = "Medicine Registered Successfully"
+                            else:
+                                msg = "Medicine Registered Failed"
+                            return render_template("MedicineReg.html",msg=msg)
+                        except psycopg2.err.IntegrityError:
+                            msg = "Medicine already Registered"
+                            return render_template("MedicineReg.html",msg=msg)
                 else:
-                    return redirect(url_for("autherror"))
-            else:
-                return redirect(url_for("autherror"))
+                    return render_template("medicineReg.html")
+        else:
+            return redirect(url_for("autherror"))
     else:
         return redirect("login")
 
