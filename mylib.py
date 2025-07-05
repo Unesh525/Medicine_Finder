@@ -2,10 +2,10 @@ import psycopg2
 import os
 def make_connection():
     conn = psycopg2.connect(
-        host="ep-calm-night-1234567.us-east-2.aws.neon.tech",
+        host="ep-orange-thunder-a8bytc5c-pooler.eastus2.azure.neon.tech",
         database="neondb",
         user="neondb_owner",
-        password=os.getenv("npg_pc9zXM7YwDEL"),
+        password="npg_pc9zXM7YwDEL",
         sslmode="require"
     )
     cur = conn.cursor()
