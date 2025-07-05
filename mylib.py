@@ -5,7 +5,7 @@ def make_connection():
         host="ep-calm-night-1234567.us-east-2.aws.neon.tech",
         database="neondb",
         user="neondb_owner",
-        password=os.getenv("DB_PASSWORD"),
+        password=os.getenv("npg_pc9zXM7YwDEL"),
         sslmode="require"
     )
     cur = conn.cursor()
