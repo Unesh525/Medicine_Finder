@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, request, redirect, session, url_for
-import pymysql
+import psycopg2
 from werkzeug.utils import secure_filename
 
 from mylib import make_connection
