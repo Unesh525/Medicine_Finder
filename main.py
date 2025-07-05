@@ -405,7 +405,6 @@ def medical_reg():
                 except psycopg2.err.IntegrityError:
                     msg = "User Already Exists"
                     return render_template("medical_register.html",msg=msg)
-            return render_template("medical_register.html")
         else:
             return redirect(url_for("autherror"))
     else:
